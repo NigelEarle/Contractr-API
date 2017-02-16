@@ -5,10 +5,7 @@
     },
     "extends": "eslint:recommended",
     "rules": {
-        "indent": [
-            "error",
-            "tab"
-        ],
+        "no-console": 0,
         "linebreak-style": [
             "error",
             "unix"
