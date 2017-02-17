@@ -1,2 +1,2 @@
-# Sk8v2-API
-### RESTful API for Sk8v2 client application
+# Contractr-API
+### RESTful API for Contractr client application
