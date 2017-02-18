@@ -1,14 +1,16 @@
 {
   "name": "Contractr-API",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "git@github.com:NigelEarle/Contractr-API.git",
   "author": "nwre87 <nwre87@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.16.1",
     "express": "^4.14.1",
+    "hbs": "^4.0.1",
     "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
     "pg": "^6.1.2",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.30.2"
