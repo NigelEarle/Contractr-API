@@ -1,6 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const passport = require('passport');
+const BearerStrategy = require('passport-http-bearer').Strategy;
+
 const PORT = process.env.PORT || 3000;
 const db = require('./models');
 const app = express();
@@ -13,8 +16,24 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(passport.initialize());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+passport.use(new BearerStrategy(
+  function (token, done) {
+    User.findOne({ token: token }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      return done(null, user, { scope: 'all' });
+    });
+  }
+));
+
+app.get('/api/someroute', passport.authenticate('bearer'),
+  (req, res) => {
+    res.send('success!!!');
+});
 
 app.post('/api/register', (req, res) => {
   const {
