@@ -12,7 +12,7 @@ const { User } = db;
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*'); // adjust to only client application IP on prod
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   next();
 });
 
@@ -30,7 +30,7 @@ passport.use(new BearerStrategy(
   }
 ));
 
-app.get('/api/someroute', passport.authenticate('bearer'),
+app.get('/api/someroute', passport.authenticate('bearer', { session: false }),
   (req, res) => {
     res.send('success!!!');
 });
