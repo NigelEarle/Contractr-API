@@ -1,11 +1,34 @@
 module.exports = function(sequelize, DataTypes) {
   const User = sequelize.define('User', {
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    picture: DataTypes.STRING,
-    token: DataTypes.STRING,
-    facebook_id: DataTypes.STRING,
-    google_id: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    picture: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    token: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    facebook_id: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: null,
+      unique: true,
+    },
+    google_id: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+      defaultValue: null,
+    }
   }, {
     classMethods: {
       associate: function() {}
