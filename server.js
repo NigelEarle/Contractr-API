@@ -41,8 +41,6 @@ app.post('/api/register', (req, res) => {
     email,
     picture,
     token,
-    facebook_id,
-    google_id,
   } = req.body;
 
   const payload = {
@@ -50,16 +48,16 @@ app.post('/api/register', (req, res) => {
     email,
     picture,
     token,
-    facebook_id: facebook_id ? facebook_id : null,
-    google_id: google_id ? google_id : null,
+    facebook_id: req.body.facebook_id ? req.body.facebook_id : null,
+    google_id: req.body.google_id ? req.body.google_id : null,
   };
 
   User.create(payload)
   .then((result) => {
-    res.send(result);
+    res.json(result.toJSON()).status(200);
   })
   .catch((err) => {
-    res.send(err);
+    res.json(err.toJSON()).status(500);
   });
 });
 

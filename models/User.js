@@ -7,10 +7,11 @@ module.exports = function(sequelize, DataTypes) {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     picture: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     token: {
       type: DataTypes.STRING,
